@@ -1,0 +1,4 @@
+.Principal_root {
+    display: grid;
+    background-color: var(--cor-fundo-padrao)
+}
