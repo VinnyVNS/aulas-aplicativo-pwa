@@ -1,10 +1,14 @@
 import './Rodape.css'
 
 function Rodape() {
+    const anoAtual = new Date().getFullYear();
+
     return (
         <>
         <footer className='Rodape_root'>
-            <h2>Rodapé...</h2>
+            <span>
+                Copyright @{anoAtual} - Todos os direitos reservados - Vinicius
+            </span>
         </footer>
         </>
     )

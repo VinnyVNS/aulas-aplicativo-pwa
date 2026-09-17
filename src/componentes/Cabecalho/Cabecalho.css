@@ -1,12 +1,6 @@
 .Cabecalho_root {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
     background-color: var(--cor-primaria-clara);
-}
-
-h1 {
-    font-size: 40px;
-    color: var(--cor-texto-padrao);
 }
