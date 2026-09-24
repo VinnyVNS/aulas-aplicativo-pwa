@@ -1,4 +1,7 @@
 .Principal_root {
-    display: grid;
-    background-color: var(--cor-fundo-padrao)
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-fundo-padrao);
+    padding: 8px 16px;
+    gap: 8px;
 }
