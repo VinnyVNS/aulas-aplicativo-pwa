@@ -1,6 +1,16 @@
 .Cabecalho_root {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: var(--cor-primaria-clara);
+}
+
+.textoImg {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.textoImg img {
+    padding: 10px;
 }

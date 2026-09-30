@@ -1,13 +1,11 @@
 import './Principal.css'
 import PaginaInicial from '../../paginas/PaginaInicial/PaginaInicial';
 
-function Principal() {
+function Principal(props) {
     return (
-        <>
         <main className='Principal_root'>
-            <PaginaInicial/>
+            {props.children}
         </main>
-        </>
     )
 }
 
