@@ -2,19 +2,22 @@ import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizad
 import Principal from "../../componentes/Principal/Principal";
 
 function PaginaInicial() {
-    return (
-        <Principal>
-            <h2>Conteúdo Principal...</h2>
+  return (
+    <Principal>
+      <h2>Conteúdo Principal...</h2>
 
-            <BotaoCustomizado tipo='primario'aoClicar={() => alert("Salvo...")}>
-                Salvar
-            </BotaoCustomizado>
+      <BotaoCustomizado tipo="primario" aoClicar={() => alert("Salvo...")}>
+        Salvar
+      </BotaoCustomizado>
 
-            <BotaoCustomizado tipo='secundaria'aoClicar={() => alert("Cancelado...")}>
-                Cancelar
-            </BotaoCustomizado>
-        </Principal>
-    )
+      <BotaoCustomizado
+        tipo="secundaria"
+        aoClicar={() => alert("Cancelado...")}
+      >
+        Cancelar
+      </BotaoCustomizado>
+    </Principal>
+  );
 }
 
 export default PaginaInicial;
