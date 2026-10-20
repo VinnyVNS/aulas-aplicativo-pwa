@@ -1,0 +1,11 @@
+.CampoCustomizado_root {
+    display: flex;
+    flex-direction: column;
+}
+
+.CampoCustomizado_input {
+    margin-top: 10px;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}

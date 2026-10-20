@@ -1,27 +1,39 @@
 import "./PaginaListaTarefas.css";
 import Principal from "../../componentes/Principal/Principal";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
-
 import { useState } from "react";
+import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 
 function PaginaListaTarefas() {
-  const [descricaoTarefa, setdescricaoTarefa] = useState("");
-  const adicaoTarefa = () => {};
+  const [descricaoTarefa, setDescricaoTarefa] = useState("");
+  const [tarefas, setTarefas] = useState([]);
+
+  const adicaoTarefa = () => {
+    tarefas.push(descricaoTarefa);
+    setTarefas([...tarefas]);
+  };
+
+  const remocaoTarefa = () => {};
 
   return (
     <Principal titulo="Lista de Tarefas" voltarPara="/">
-      <input
+      <CampoCustomizado
+        label="Tarefa"
         type="text"
         placeholder="Digite um Tarefa"
         value={descricaoTarefa}
         onChange={(evento) => {
-          setdescricaoTarefa(evento.target.value);
+          setDescricaoTarefa(evento.target.value);
         }}
       />
 
       <BotaoCustomizado tipo="primario" aoClicar={adicaoTarefa}>
-        Adicionar Tarefas{" "}
+        Adicionar Tarefas
       </BotaoCustomizado>
+
+      {tarefas.map((item) => {
+        return <li>{item}</li>;
+      })}
     </Principal>
   );
 }
