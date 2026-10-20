@@ -1,8 +1,12 @@
 import "./Principal.css";
 
+import { Link } from "react-router-dom";
+
 function Principal(props) {
   return (
     <main className="Principal_root">
+      {props.voltarPara && <Link to={props.voltarPara}>{"Voltar"}</Link>}
+
       <h2>{props.titulo}</h2>
 
       {props.children}

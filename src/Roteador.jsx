@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PaginaInicial from "./paginas/PaginaInicial/PaginaInicial";
 import PaginaListaProdutos from "./paginas/PaginaListaProdutos/PaginaListaProdutos";
+import PaginaListaTarefas from "./paginas/PaginaListaTarefas/PaginaListaTarefas";
 
 const roteador = createBrowserRouter([
   {
@@ -8,8 +9,12 @@ const roteador = createBrowserRouter([
     element: <PaginaInicial />,
   },
   {
-    path: "Lista-Produtos",
+    path: "lista-produtos",
     element: <PaginaListaProdutos />,
+  },
+  {
+    path: "lista-tarefas",
+    element: <PaginaListaTarefas />,
   },
 ]);
 

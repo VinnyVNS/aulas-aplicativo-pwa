@@ -6,13 +6,11 @@
 }
 
 .PaginaListaProdutos_cores {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.PaginaListaProdutos_cores-item {
-    flex: 1;
-    height: 16px;
+.PaginaListaProdutos_cor-item {
+  flex: 1;
+  height: 16px;
 }
-
-
