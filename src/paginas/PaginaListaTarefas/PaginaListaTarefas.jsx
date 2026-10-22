@@ -3,17 +3,30 @@ import Principal from "../../componentes/Principal/Principal";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 import { useState } from "react";
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
+import { FaTrashAlt } from "react-icons/fa";
 
 function PaginaListaTarefas() {
   const [descricaoTarefa, setDescricaoTarefa] = useState("");
   const [tarefas, setTarefas] = useState([]);
 
   const adicaoTarefa = () => {
-    tarefas.push(descricaoTarefa);
-    setTarefas([...tarefas]);
+    if (!descricaoTarefa.trim()) {
+      alert("O campo não pode estar vazio.");
+      setDescricaoTarefa("");
+      return;
+    }
+
+    const novaTarefa = { id: Date.now(), descricao: descricaoTarefa };
+    setTarefas([...tarefas, novaTarefa]);
+    setDescricaoTarefa("");
   };
 
-  const remocaoTarefa = () => {};
+  const remocaoTarefa = (tarefaParaExcluir) => {
+    if (confirm(`Deseja remover a tarefa ${tarefaParaExcluir.descricao}?`)) {
+      const tarefasAtualizadas = tarefas.filter((item) => item.id !== tarefaParaExcluir.id);
+      setTarefas(tarefasAtualizadas);
+    }
+  };
 
   return (
     <Principal titulo="Lista de Tarefas" voltarPara="/">
@@ -32,8 +45,19 @@ function PaginaListaTarefas() {
       </BotaoCustomizado>
 
       {tarefas.map((item) => {
-        return <li>{item}</li>;
+        return (
+          <div key={item.id} className="PaginaListaTarefas_item">
+            {item.descricao}{" "}
+            <FaTrashAlt
+              cursor="pointer"
+              color="red"
+              onClick={() => remocaoTarefa(item)}
+            />
+          </div>
+        );
       })}
+
+      {!tarefas.length && <span className="PaginaListaTarefas_vazia">Nenhuma tarefa cadastrada.</span>}
     </Principal>
   );
 }

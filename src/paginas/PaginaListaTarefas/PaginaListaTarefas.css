@@ -1,0 +1,15 @@
+.PaginaListaTarefas_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--cor-secundaria);
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.PaginaListaTarefas_vazia {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}

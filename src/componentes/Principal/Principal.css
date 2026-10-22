@@ -5,3 +5,9 @@
     padding: 8px 16px;
     gap: 8px;
 }
+
+.Principal_titulo {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
