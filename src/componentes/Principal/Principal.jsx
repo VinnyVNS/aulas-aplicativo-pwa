@@ -1,5 +1,5 @@
 import "./Principal.css";
-import { IoArrowBack } from "react-icons/io5";
+import { FaArrowRotateLeft } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ function Principal(props) {
       <div className="Principal_titulo">
         {props.voltarPara && (
           <Link to={props.voltarPara}>
-            <IoArrowBack size={24} />
+            <FaArrowRotateLeft size={20}/>
           </Link>
         )}
 

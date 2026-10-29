@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PaginaInicial from "./paginas/PaginaInicial/PaginaInicial";
 import PaginaListaProdutos from "./paginas/PaginaListaProdutos/PaginaListaProdutos";
 import PaginaListaTarefas from "./paginas/PaginaListaTarefas/PaginaListaTarefas";
+import PaginaCadastroCliente from "./paginas/PaginaCadastroCliente/PaginaCadastroCliente";
 
 const roteador = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const roteador = createBrowserRouter([
   {
     path: "lista-tarefas",
     element: <PaginaListaTarefas />,
+  },
+  {
+    path: "cadastro-cliente",
+    element: <PaginaCadastroCliente />,
   },
 ]);
 
