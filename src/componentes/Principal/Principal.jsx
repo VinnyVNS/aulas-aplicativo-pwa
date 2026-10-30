@@ -1,5 +1,5 @@
 import "./Principal.css";
-import { FaArrowRotateLeft } from "react-icons/fa6";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -9,11 +9,11 @@ function Principal(props) {
       <div className="Principal_titulo">
         {props.voltarPara && (
           <Link to={props.voltarPara}>
-            <FaArrowRotateLeft size={20}/>
+            <FaArrowAltCircleLeft size={20}/>
           </Link>
         )}
 
-        <h2>{props.titulo}</h2>
+        <h2 >{props.titulo}</h2>
       </div>
 
       {props.children}
