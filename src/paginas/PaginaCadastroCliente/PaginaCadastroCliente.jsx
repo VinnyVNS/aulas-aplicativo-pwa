@@ -6,12 +6,16 @@ import "./PaginaCadastroCliente.css";
 import {
   formatarComMascara,
   MASCARA_CPF,
+  MASCARA_DATA_NASCIMENTO,
+  MASCARA_NOME,
   MASCARA_TELEFONE,
 } from "../../utils/formatarComMascara";
 import { toast } from "react-toastify";
 import validarCPF from "../../utils/validarCpf";
 import validarEmail from "../../utils/validarEmail";
 import { salvarCliente } from "../../servicos/clientes.servico";
+import validarDataNascimento from "../../utils/validarDataNascimento";
+import validarTelefone from "../../utils/validarTelefone";
 
 function PaginaCadastroCliente() {
   const [nome, setNome] = useState("");
@@ -31,7 +35,7 @@ function PaginaCadastroCliente() {
     }
 
     if (!validarEmail(email)) {
-      toast.error("Email inválido!", {
+      toast.error("Email inválido ou incompleto!", {
         theme: "colored",
         hideProgressBar: true,
         autoClose: 2000,
@@ -40,7 +44,25 @@ function PaginaCadastroCliente() {
     }
 
     if (cpf.trim() && !validarCPF(cpf)) {
-      toast.error("CPF inválido!", {
+      toast.error("CPF inválido ou incompleto!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (dataNascimento.trim() && !validarDataNascimento(dataNascimento)) {
+      toast.error("Data de nascimento inválida ou incompleta!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (telefone.trim() && !validarTelefone(telefone)) {
+      toast.error("Telefone inválido ou incompleto!", {
         theme: "colored",
         hideProgressBar: true,
         autoClose: 2000,
@@ -76,14 +98,16 @@ function PaginaCadastroCliente() {
   return (
     <Principal titulo="Novo Cliente" voltarPara="/">
       <CampoCustomizado
-        label="Nome"
+        label="Nome *"
         maxLength={50}
         placeholder="Digite seu nome..."
         value={nome}
-        onChange={(e) => setNome(e.target.value)}
+        onChange={(e) =>
+          setNome(formatarComMascara(e.target.value, MASCARA_NOME))
+        }
       />
       <CampoCustomizado
-        label="Email"
+        label="Email *"
         maxLength={50}
         placeholder="Digite seu email..."
         value={email}
@@ -99,9 +123,13 @@ function PaginaCadastroCliente() {
       />
       <CampoCustomizado
         label="Data de Nascimento"
-        type="date"
+        placeholder="Digite sua data de nascimento..."
         value={dataNascimento}
-        onChange={(e) => setDataNascimento(e.target.value)}
+        onChange={(e) =>
+          setDataNascimento(
+            formatarComMascara(e.target.value, MASCARA_DATA_NASCIMENTO),
+          )
+        }
       />
       <CampoCustomizado
         label="Telefone"

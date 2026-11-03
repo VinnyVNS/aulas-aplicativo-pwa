@@ -9,11 +9,11 @@ function Principal(props) {
       <div className="Principal_titulo">
         {props.voltarPara && (
           <Link to={props.voltarPara}>
-            <FaArrowAltCircleLeft size={20}/>
+            <FaArrowAltCircleLeft size={30} />
           </Link>
         )}
 
-        <h2 >{props.titulo}</h2>
+        <h2>{props.titulo}</h2>
       </div>
 
       {props.children}

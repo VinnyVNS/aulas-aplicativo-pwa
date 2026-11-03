@@ -5,13 +5,12 @@ function Cabecalho() {
   return (
     <>
       <header className="Cabecalho_root">
-        <div className="textoImg">
+        <div className="Cabecalho_titulo">
           <img src="/favicon.svg" />
           <h1>Aplicativo PWA</h1>
         </div>
-        <div className="avatar">
-          <Avatar nome="Vinicius Souza" />
-        </div>
+        
+        <Avatar nome="Vinicius Souza" />
       </header>
     </>
   );
