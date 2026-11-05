@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
@@ -13,19 +13,39 @@ import {
 import { toast } from "react-toastify";
 import validarCPF from "../../utils/validarCpf";
 import validarEmail from "../../utils/validarEmail";
-import { salvarCliente } from "../../servicos/clientes.servico";
+import { buscarClientes, salvarCliente } from "../../servicos/clientes.servico";
 import validarDataNascimento from "../../utils/validarDataNascimento";
 import validarTelefone from "../../utils/validarTelefone";
+import { useNavigate, useParams } from "react-router-dom";
 
 function PaginaCadastroCliente() {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const navigate = useNavigate();
+
+  const [formCliente, setFormCliente] = useState({
+    id: "",
+    nome: "",
+    email: "",
+    cpf: "",
+    dataNascimento: "",
+    telefone: "",
+  });
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      const clienteParaEditar = buscarClientes().find(
+        (item) => item.id === +params.id,
+      );
+
+      if (clienteParaEditar) {
+        setFormCliente(clienteParaEditar);
+      }
+    }
+  }, [params.id]);
 
   const salvar = () => {
-    if (!nome.trim() || !email.trim()) {
+    if (!formCliente.nome.trim() || !formCliente.email.trim()) {
       toast.error("Os campos nome e email são obrigatórios!", {
         theme: "colored",
         hideProgressBar: true,
@@ -34,7 +54,7 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    if (!validarEmail(email)) {
+    if (!validarEmail(formCliente.email)) {
       toast.error("Email inválido ou incompleto!", {
         theme: "colored",
         hideProgressBar: true,
@@ -43,7 +63,7 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    if (cpf.trim() && !validarCPF(cpf)) {
+    if (formCliente.cpf.trim() && !validarCPF(formCliente.cpf)) {
       toast.error("CPF inválido ou incompleto!", {
         theme: "colored",
         hideProgressBar: true,
@@ -52,7 +72,10 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    if (dataNascimento.trim() && !validarDataNascimento(dataNascimento)) {
+    if (
+      formCliente.dataNascimento.trim() &&
+      !validarDataNascimento(formCliente.dataNascimento)
+    ) {
       toast.error("Data de nascimento inválida ou incompleta!", {
         theme: "colored",
         hideProgressBar: true,
@@ -61,7 +84,7 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    if (telefone.trim() && !validarTelefone(telefone)) {
+    if (formCliente.telefone.trim() && !validarTelefone(formCliente.telefone)) {
       toast.error("Telefone inválido ou incompleto!", {
         theme: "colored",
         hideProgressBar: true,
@@ -70,73 +93,77 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    const cliente = {
-      id: Date.now(),
-      nome,
-      email,
-      cpf,
-      dataNascimento,
-      telefone,
-    };
-
-    setNome("");
-    setEmail("");
-    setCpf("");
-    setDataNascimento("");
-    setTelefone("");
-
-    salvarCliente(cliente);
+    salvarCliente(formCliente);
     toast.success("Cliente salvo com sucesso!", {
       theme: "colored",
       hideProgressBar: true,
       autoClose: 2000,
     });
 
-    console.log(cliente);
+    console.log(formCliente);
+
+    navigate("/lista-clientes");
   };
 
+  const titulo = formCliente.id ? "Editar Cliente" : "Novo Cliente";
+
   return (
-    <Principal titulo="Novo Cliente" voltarPara="/">
+    <Principal titulo={titulo} voltarPara="/">
       <CampoCustomizado
         label="Nome *"
         maxLength={50}
         placeholder="Digite seu nome..."
-        value={nome}
+        value={formCliente.nome}
         onChange={(e) =>
-          setNome(formatarComMascara(e.target.value, MASCARA_NOME))
+          setFormCliente({
+            ...formCliente,
+            nome: formatarComMascara(e.target.value, MASCARA_NOME),
+          })
         }
       />
       <CampoCustomizado
         label="Email *"
         maxLength={50}
         placeholder="Digite seu email..."
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formCliente.email}
+        onChange={(e) =>
+          setFormCliente({ ...formCliente, email: e.target.value })
+        }
       />
       <CampoCustomizado
         label="CPF"
         placeholder="Digite seu CPF..."
-        value={cpf}
+        value={formCliente.cpf}
         onChange={(e) =>
-          setCpf(formatarComMascara(e.target.value, MASCARA_CPF))
+          setFormCliente({
+            ...formCliente,
+            cpf: formatarComMascara(e.target.value, MASCARA_CPF),
+          })
         }
       />
       <CampoCustomizado
         label="Data de Nascimento"
         placeholder="Digite sua data de nascimento..."
-        value={dataNascimento}
+        value={formCliente.dataNascimento}
         onChange={(e) =>
-          setDataNascimento(
-            formatarComMascara(e.target.value, MASCARA_DATA_NASCIMENTO),
-          )
+          setFormCliente({
+            ...formCliente,
+            dataNascimento: formatarComMascara(
+              e.target.value,
+              MASCARA_DATA_NASCIMENTO,
+            ),
+          })
         }
       />
       <CampoCustomizado
         label="Telefone"
         placeholder="Digite seu telefone..."
-        value={telefone}
+        value={formCliente.telefone}
         onChange={(e) =>
-          setTelefone(formatarComMascara(e.target.value, MASCARA_TELEFONE))
+          setFormCliente({
+            ...formCliente,
+            telefone: formatarComMascara(e.target.value, MASCARA_TELEFONE),
+          })
         }
       />
 

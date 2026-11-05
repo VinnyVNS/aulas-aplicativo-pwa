@@ -8,7 +8,7 @@ import {
   buscarLocalStorage,
   salvarLocalStorage,
 } from "../../servicos/localstorage.servico";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 function PaginaListaTarefas() {
   const [descricaoTarefa, setDescricaoTarefa] = useState("");
@@ -28,7 +28,11 @@ function PaginaListaTarefas() {
 
     salvarLocalStorage("tarefas", tarefasAtualizadas);
 
-    toast.success("Tarefa adicionada com sucesso!", {theme: "colored", hideProgressBar: true, autoClose: 2000});
+    toast.success("Tarefa adicionada com sucesso!", {
+      theme: "colored",
+      hideProgressBar: true,
+      autoClose: 2000,
+    });
   };
 
   const remocaoTarefa = (tarefaParaExcluir) => {
@@ -40,7 +44,11 @@ function PaginaListaTarefas() {
 
       salvarLocalStorage("tarefas", tarefasAtualizadas);
 
-      toast.success("Tarefa removida com sucesso!", {theme: "colored", hideProgressBar: true, autoClose: 2000});
+      toast.success("Tarefa removida com sucesso!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
     }
   };
 

@@ -19,7 +19,7 @@ const roteador = createBrowserRouter([
     element: <PaginaListaTarefas />,
   },
   {
-    path: "cadastro-cliente",
+    path: "cadastro-cliente/:id?",
     element: <PaginaCadastroCliente />,
   },
   {
