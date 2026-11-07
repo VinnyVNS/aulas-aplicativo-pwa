@@ -1,4 +1,4 @@
-# 📱 Aulas - Programação de Aplicativos - Curso Técnico em Programação do SENAI/SC
+# 📱 Aulas - Programação de Aplicativos - Curso Técnico em Desenvolvimento de Sistemas do SENAI/SC
 
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-build-purple?logo=vite)
@@ -6,7 +6,7 @@
 
 Este repositório contém o projeto desenvolvido durante as aulas de **Frontend com ReactJS** e **Progressive Web Apps (PWA)** na disciplina **Programação de Aplicativos**.
 
-As aulas fazem parte da **2ª fase (2026/2)** do **Curso Técnico em Programação do SENAI/SC**.
+As aulas fazem parte da **2ª fase (2026/2)** do **Curso Técnico em Desenvolvimento de Sistemas do SENAI/SC**.
 
 O objetivo do projeto é aprender, de forma **prática e progressiva**, conceitos de desenvolvimento de aplicações modernas utilizando **ReactJS**, evoluindo até a construção de um **Progressive Web App (PWA)**.
 
@@ -30,7 +30,7 @@ Este projeto utiliza as seguintes tecnologias:
 ## 1️⃣ Clone o repositório
 
 ```bash
-git clone https://github.com/thiagocordeirooo/aulas-aplicativo-pwa.git
+git clone https://github.com/VinnyVNS/aulas-aplicativo-pwa.git
 ```
 
 ## 2️⃣ Acesse a pasta do projeto
