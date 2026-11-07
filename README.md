@@ -65,18 +65,9 @@ http://localhost:5173
 
 ---
 
-
-# 🎯 Objetivo educacional
-
-Este projeto foi criado com **fins didáticos**, acompanhando a evolução dos conteúdos apresentados em aula e permitindo que os alunos desenvolvam uma aplicação completa passo a passo.
-
-A ideia é que, ao final da disciplina, os alunos tenham construído um **aplicativo web moderno e instalável**, utilizando boas práticas do desenvolvimento frontend.
-
----
-
 # 👨‍🏫 Autor
 
-Projeto desenvolvido por **Vinícius Chaves de Souza** para as aulas do **Curso Técnico em Programação - SENAI/SC** de **Thiago Cordeiro**.
+Projeto desenvolvido por **Vinícius Chaves de Souza** durante as aulas de **Programação de Aplicativos** do docente **Thiago Cordeiro**. **https://github.com/thiagocordeirooo**
 
 ---
 
