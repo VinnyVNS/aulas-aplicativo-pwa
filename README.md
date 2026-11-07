@@ -82,4 +82,4 @@ Projeto desenvolvido por **Vinícius Chaves de Souza** para as aulas do **Curso 
 
 # 📄 Licença
 
-Este projeto é destinado a **uso educacional**.# aulas-aplicativo-pwa
+Este projeto é destinado a **uso educacional**. #aulas-aplicativo-pwa
